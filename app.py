@@ -11,7 +11,7 @@ PRODUK = {
 }
 
 # Data contoh member
-MEMBER = ["cindu", "budi", "siti"]
+MEMBER = ["cindu", "farid", "andhika"]
 
 
 def halaman(judul, isi):
@@ -83,7 +83,7 @@ def produk():
 def kontak():
     return halaman(
         "Kontak",
-        "<p>Email: toko@example.com</p>"
+        "<p>Email: cndprrtm@gmail.com</p>"
     )
 
 
