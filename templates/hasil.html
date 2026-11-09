@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Hasil Cek Username{% endblock %}
+
+{% block content %}
+
+<h2>Hasil Pengecekan Username</h2>
+
+{% if status == "tidak_valid" %}
+    <p>Username tidak valid!</p>
+
+{% elif status == "tersedia" %}
+    <p>Username tersedia dan bisa digunakan!</p>
+
+{% elif status == "dipakai" %}
+    <p>Username sudah digunakan!</p>
+
+{% endif %}
+
+<a href="{{ url_for('beranda') }}">Kembali ke Beranda</a>
+
+{% endblock %}

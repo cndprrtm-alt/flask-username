@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, abort
+from flask import Flask, redirect, url_for, request, render_template
 import re
 
 app = Flask(__name__)
@@ -95,18 +95,20 @@ def username_valid(username):
 # 5. Route dinamis untuk pengecekan username
 @app.route("/cek/<username>")
 def cek_username(username):
+    username = username.lower()
+
     if not username_valid(username):
-        return halaman(
-            "Username Tidak Valid",
-            "<p>Username harus 3-20 karakter dan hanya "
-            "boleh berisi huruf, angka, atau underscore.</p>"
-        ), 400
+        status = "tidak_valid"
+    elif username in ["andi", "budi", "citra"]:
+        status = "dipakai"
+    else:
+        status = "tersedia"
 
-    # Redirect menggunakan url_for
-    return redirect(url_for("user_profile", username=username))
-
-
-# Form beranda mengirim username melalui query string
+    return render_template(
+        "hasil.html",
+        username=username,
+        status=status
+    )
 @app.route("/cek")
 def cek_form():
     from flask import request
@@ -169,6 +171,14 @@ def halaman_tidak_ditemukan(error):
         """
     ), 404
 
+@app.route("/daftar")
+def daftar_username():
+    daftar_user = ["andi", "budi", "citra", "dewi"]
+
+    return render_template(
+        "daftar.html",
+        daftar_user=daftar_user
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)

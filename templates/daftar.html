@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Daftar Username{% endblock %}
+
+{% block content %}
+
+<h2>Daftar Username Terdaftar</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>No</th>
+        <th>Username</th>
+    </tr>
+
+    {% for user in daftar_user %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ user | upper }}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="2">Belum ada data</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p>Jumlah pengguna: {{ daftar_user | length }}</p>
+
+{% endblock %}

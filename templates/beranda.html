@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Beranda - Cek Username{% endblock %}
+
+{% block content %}
+
+<div class="text-center">
+    <h1>Selamat Datang!</h1>
+    <p>Aplikasi Pengecekan Username</p>
+    <p>Silakan gunakan aplikasi ini untuk memeriksa ketersediaan username.</p>
+
+    <a href="{{ url_for('cek_form') }}" class="btn btn-primary">
+        Cek Username
+    </a>
+</div>
+
+{% endblock %}
